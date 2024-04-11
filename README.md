@@ -1,56 +1,66 @@
 Conversa de Botequim.
-Canção de Noel Rosa.
+CanÃ§Ã£o de Noel Rosa.
 
-Seu garçom faça o favor de me trazer depressa
-Uma boa média que não seja requentada
-Um pão bem quente com manteiga à beça
-Um guardanapo e um copo d'água bem gelada.
+Seu garÃ§om faÃ§a o favor de me trazer depressa
+Uma boa mÃ©dia que nÃ£o seja requentada
+Um pÃ£o bem quente com manteiga Ã  beÃ§a
+Um guardanapo e um copo d'Ã¡gua bem gelada.
 
 Feche a porta da direita com muito cuidado
-Que não estou disposto a ficar exposto ao sol
-Vá perguntar ao seu freguês do lado
+Que nÃ£o estou disposto a ficar exposto ao sol
+VÃ¡ perguntar ao seu freguÃªs do lado
 Qual foi o resultado do futebol.
 
-Se você ficar limpando a mesa
-Não me levanto nem pago a despesa
-Vá pedir ao seu patrão
+Se vocÃª ficar limpando a mesa
+NÃ£o me levanto nem pago a despesa
+VÃ¡ pedir ao seu patrÃ£o
 Uma caneta, um tinteiro
-Um envelope e um cartão.
+Um envelope e um cartÃ£o.
 
-Não se esqueça de me dar palitos
+NÃ£o se esqueÃ§a de me dar palitos
 E um cigarro pra espantar mosquitos
-Vá dizer ao charuteiro
+VÃ¡ dizer ao charuteiro
 Que me empreste umas revistas
 Um isqueiro e um cinzeiro.
 
-Seu garçom faça o favor de me trazer depressa
-Uma boa média que não seja requentada
-Um pão bem quente com manteiga à beça
-Um guardanapo e um copo d'água bem gelada.
+Seu garÃ§om faÃ§a o favor de me trazer depressa
+Uma boa mÃ©dia que nÃ£o seja requentada
+Um pÃ£o bem quente com manteiga Ã  beÃ§a
+Um guardanapo e um copo d'Ã¡gua bem gelada.
 
 Feche a porta da direita com muito cuidado
-Que não estou disposto a ficar exposto ao sol
-Vá perguntar ao seu freguês do lado
+Que nÃ£o estou disposto a ficar exposto ao sol
+VÃ¡ perguntar ao seu freguÃªs do lado
 Qual foi o resultado do futebol.
 
 Telefone ao menos uma vez
-Para três-quatro-quatro-três-três-três
-E ordene ao seu Osório
+Para trÃªs-quatro-quatro-trÃªs-trÃªs-trÃªs
+E ordene ao seu OsÃ³rio
 Que me mande um guarda-chuva
-Aqui pro nosso escritório.
+Aqui pro nosso escritÃ³rio.
 
-Seu garçom me empresta algum dinheiro
+Seu garÃ§om me empresta algum dinheiro
 Que eu deixei o meu com o bicheiro
-Vá dizer ao seu gerente
+VÃ¡ dizer ao seu gerente
 Que pendure esta despesa
 No cabide ali em frente.
 
-Seu garçom faça o favor de me trazer depressa
-Uma boa média que não seja requentada
-Um pão bem quente com manteiga à beça
-Um guardanapo e um copo d'água bem gelada.
+Seu garÃ§om faÃ§a o favor de me trazer depressa
+Uma boa mÃ©dia que nÃ£o seja requentada
+Um pÃ£o bem quente com manteiga Ã  beÃ§a
+Um guardanapo e um copo d'Ã¡gua bem gelada.
 
 Feche a porta da direita com muito cuidado
-Que não estou disposto a ficar exposto ao sol
-Vá perguntar ao seu freguês do lado
+Que nÃ£o estou disposto a ficar exposto ao sol
+VÃ¡ perguntar ao seu freguÃªs do lado
 Qual foi o resultado do futebol.
+
+1Crie uma classe chamada Carro com atributos como marca, modelo, ano e cor. Adicione mÃƒÂ©todos para ligar o carro, desligar o carro e acelerar.
+
+2-Crie uma classe Animal com caracterÃƒÂ­sticas como nome, idade e espÃƒÂ©cie. Implemente mÃƒÂ©todos para fazer o animal emitir um som e para mostrar informaÃƒÂ§ÃƒÂµes sobre ele.
+
+3-Crie uma classe chamada Conta BancÃƒÂ¡ria com atributos como nÃƒÂºmero da conta, saldo e titular. Implemente mÃƒÂ©todos para depositar dinheiro, sacar dinheiro e mostrar o saldo atual.
+
+4-Crie uma classe Produto que represente um item em uma loja. Inclua atributos como nome, preÃƒÂ§o e quantidade em estoque. Adicione mÃƒÂ©todos para atualizar o estoque e calcular o preÃƒÂ§o total com base na quantidade desejada.
+
+5-Crie  uma classe TriÃƒÂ¢ngulo com atributos para os lados do triÃƒÂ¢ngulo. Adicione mÃƒÂ©todos para calcular a ÃƒÂ¡rea e o perÃƒÂ­metro do triÃƒÂ¢ngulo.
