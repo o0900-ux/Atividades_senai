@@ -108,16 +108,3 @@ if __name__ == '__main__':
     pular_linha()
     print(lados.perimetro())
     print(lados.area())
-    
-
-
-    
-          
-          
-    
-    
-
-
-             
-
-        
