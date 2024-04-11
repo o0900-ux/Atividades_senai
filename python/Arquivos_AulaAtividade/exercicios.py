@@ -53,12 +53,12 @@ class Conta_bancaria:
          self.titular=titular
 
     def depositar(self, valor):
-         self.total= self.saldo + valor
-         return f'Depósito de R$ {valor} realizado com sucesso!\nSaldo atual: R$ {self.total}'
+         self.saldo += valor
+         return f'depósito de R$ {valor} realizado com sucesso\nsaldo atual: R$ {self.saldo}'
     
     def sacar(self, valor):
-        self.saldo= self.total - valor
-        return f'Saque de R$ {valor} realizado com sucesso!\nSaldo atual: R$ {self.saldo}' 
+        self.saldo -= valor
+        return f'saque de R$ {valor} realizado com sucesso\nsaldo atual: R$ {self.saldo}' 
     
 if __name__ == '__main__':
     conta = Conta_bancaria('0987656',11,'pessoa humana')
@@ -68,22 +68,47 @@ if __name__ == '__main__':
 
 #questão 4.
 class Produto:
-    def __init__(self, nome, preço, estoque):
+    def __init__(self, nome, preco, estoque):
         self.nome=nome
-        self.preço=preço
+        self.preco=preco
         self.estoque=estoque
 
     def compra(self, produtos):
-         self.preço_total = self.preço * produtos
-         return f'o total da compra de {produtos} prudutos foi de {self.preço_total}'
-    
-    #def estoque_saldo(self):
-         #self.estoque_total =
-    
+         self.produtos=produtos
+         self.preco *= produtos
+         return f'o total da compra de {produtos} prudutos foi de R$ {self.preco}'
+
+    def estoque_final(self):
+        self.estoque -= self.produtos
+        return f'quantidade de itens ainda em estoque de {self.estoque}'
+
 if __name__ == '__main__':
     loja = Produto('remedio',11.55,50)
     pular_linha()
     print(loja.compra(2))
+    print(loja.estoque_final())
+
+#questão 5.
+class Triangulo:
+    def __init__(self, lado1, lado2, lado3):
+        self.lado1 = lado1
+        self.lado2 = lado2
+        self.lado3 = lado3
+
+    def perimetro(self):
+        todos=self.lado1 + self.lado2 + self.lado3
+        return f'o perimetro e igual: {todos}'
+
+    def area(self):
+        todos=self.lado1 + self.lado2 + self.lado3 / 2
+        return f'o perimetro e igual: {todos}'
+
+if __name__ == '__main__':
+    lados = Triangulo(13,11,5)
+    pular_linha()
+    print(lados.perimetro())
+    print(lados.area())
+    
 
 
     
