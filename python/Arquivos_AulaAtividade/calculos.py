@@ -1,4 +1,4 @@
-def soma(x,y):
+def soma(x,y): 
     return x+y
 
 def diferença(x,y):
