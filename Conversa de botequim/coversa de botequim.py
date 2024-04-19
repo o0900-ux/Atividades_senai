@@ -11,6 +11,8 @@ pygame.mixer.music.load('1.mp3')
 pygame.mixer.music.play(-1)
 
 texto = """
+Conversa de botequim.
+
 Seu garçom faça o favor de me trazer depressa Uma boa média que não seja requentada Um pão bem quente com manteiga à beça Um guardanapo e um copo d'água bem gelada.
 
 Feche a porta da direita com muito cuidado Que não estou disposto a ficar exposto ao sol Vá perguntar ao seu freguês do lado Qual foi o resultado do futebol.
@@ -36,7 +38,7 @@ frases = texto.split("\n\n")
 
 for frase in frases:
     print(frase)
-    time.sleep(5)
+    time.sleep(15)
 
 
 pygame.mixer.music.stop()
