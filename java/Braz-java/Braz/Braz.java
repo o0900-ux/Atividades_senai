@@ -25,7 +25,7 @@ public class Braz extends JFrame {
     private boolean gameOver;
 
     public Braz() {
-        super("Simple Jump Game");
+        super("Braz");
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initializeGame();
