@@ -23,6 +23,8 @@ public class Braz extends JFrame {
     private int score;
 
     private boolean gameOver;
+    private boolean mostrarPontuacao = true;
+    
 
     public Braz() {
         super("Braz");
@@ -92,11 +94,15 @@ public class Braz extends JFrame {
         g.fillRect(objectX, objectY, OBJECT_WIDTH, OBJECT_HEIGHT);
 
  
-        g.setColor(Color.BLACK);
-        g.drawString("Pontuação: " + score, 10, 20);
+        if (mostrarPontuacao) {
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("Arial", Font.PLAIN, 15));
+            g.drawString("Pontuação: " + score, 10, 20);
+        }
 
-        
         if (gameOver) {
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("Arial", Font.PLAIN, 20)); 
             g.drawString("Game Over!", WIDTH / 2 - 50, HEIGHT / 2);
         }
     }
