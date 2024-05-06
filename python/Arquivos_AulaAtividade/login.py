@@ -1,3 +1,9 @@
+from kivy.config import Config
+
+Config.set('graphics', 'width', '360')
+Config.set('graphics', 'height', '640')
+Config.set('graphics', 'resizable', False)
+
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
@@ -45,8 +51,6 @@ class Umatela(App):
     def build(self):
         Window.clearcolor = (1, 1, 1, 1)
         return Telalogin()
-
-Window.size = (360, 640)  
 
 if __name__ == '__main__':
     Umatela().run()
