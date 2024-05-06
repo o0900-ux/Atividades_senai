@@ -15,11 +15,11 @@ class Telalogin(BoxLayout):
 
         self.add_widget(AsyncImage(source='https://github.com/MateusN17/Reposit-rio-/blob/main/Kivy/images.png?raw=true'))
         
-        self.add_widget(Label(text="Insira o seu E-mail"))
+        self.add_widget(Label(text="Insira o seu E-mail", color=(0, 0, 0.2, 1),bold=True,font_size= 26))
         self.Email = TextInput(hint_text="Digite o Seu E-mail")
         self.add_widget(self.Email)
         
-        self.add_widget(Label(text="Insira sua Senha:"))
+        self.add_widget(Label(text="Insira sua Senha:", color=(0, 0, 0.2, 1),bold=True,font_size= 26))
         self.Senha = TextInput(hint_text="Digite sua senha", password=True)
         self.add_widget(self.Senha)
         
@@ -43,6 +43,7 @@ class Telalogin(BoxLayout):
 
 class Umatela(App):
     def build(self):
+        Window.clearcolor = (1, 1, 1, 1)
         return Telalogin()
 
 Window.size = (360, 640)  
