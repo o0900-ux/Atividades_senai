@@ -129,7 +129,12 @@ class Telalogin(BoxLayout):
                 connection.close()
 
     def reset_senha(self, instance):
-        print("Redefinir senha")
+        email = self.Email.text
+        senha = self.Senha.text
+        if email.strip() == "" or senha.strip() == "":
+            print("Por favor, preencha todos os campos.")
+        else:
+            print('Senha nova!!!!!!!!!!!!')
 
 
 class Umatela(App):
