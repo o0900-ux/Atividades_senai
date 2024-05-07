@@ -21,7 +21,7 @@ class TelaPerfil(BoxLayout):
         self.spacing = 10  
         self.padding = 20
         
-        self.add_widget(Label(text=f"Bem-vindo, {email}", color=(0, 0, 0.2, 1), bold=True, font_size=26))
+        self.add_widget(Label(text=f"Bem-vindo, {email}\n{email} Versão beta do App!\nTela de Verificação de usuario =).", color=(0, 0, 0.2, 1), bold=True, font_size=16))
         
         botao_layout = BoxLayout(padding=8)
         self.add_widget(botao_layout)
