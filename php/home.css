@@ -1,0 +1,228 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Botões */
+button {
+    background-color: #1877f2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #166fe5;
+}
+
+/* Caixas de postagem */
+.post {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagem de perfil */
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Botões de ação */
+.post button {
+    margin-top: 10px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Estilos da barra de navegação */
+.navbar {
+    background-color: #4267B2; /* Cor de fundo da barra de navegação */
+    color: #fff; /* Cor do texto */
+    padding: 15px 0; /* Espaçamento interno */
+}
+
+.container {
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centralizar o conteúdo */
+    padding: 0 20px; /* Espaçamento interno */
+}
+
+/* Estilos da barra de navegação */
+.navbar {
+    background-color: #4267B2; /* Cor de fundo da barra de navegação */
+    color: #fff; /* Cor do texto */
+    padding: 15px 0; /* Espaçamento interno */
+}
+
+.container {
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centralizar o conteúdo */
+    padding: 0 20px; /* Espaçamento interno */
+}
+
+/* Estilos para o título */
+/* Estilos para o título */
+.navbar h1 {
+    margin: 0; /* Remover margens */
+    font-size: 24px; /* Tamanho da fonte */
+    display: inline-block; /* Exibir o título na mesma linha */
+    margin-left: 20px; /* Espaçamento à esquerda para afastar o título do lado esquerdo da página */
+}
+
+
+/* Estilos para os links */
+/* Estilos para os links */
+/* Estilos para os links */
+/* Estilos para os links */
+/* Estilos para os links */
+.nav-links {
+    list-style: none; /* Remover marcadores de lista */
+    margin: 0; /* Remover margens */
+    padding: 0; /* Remover preenchimento */
+    float: right; /* Posicionar a lista de links à direita */
+}
+
+.nav-links li {
+    display: inline-block; /* Exibir os itens da lista na mesma linha */
+    margin-left: 20px; /* Espaçamento entre os itens da lista */
+    vertical-align: middle; /* Alinhar verticalmente os itens */
+}
+
+.nav-links li:first-child {
+    margin-left: 0; /* Remover margem à esquerda do primeiro item */
+}
+
+.nav-links li a {
+    text-decoration: none; /* Remover sublinhado dos links */
+    color: #fff; /* Cor do texto */
+    font-size: 18px; /* Tamanho da fonte */
+}
+
+.nav-links li a:hover {
+    text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+}
+
+/* Estilos para a foto de perfil */
+.nav-links li img {
+    width: 40px; /* Largura da imagem */
+    height: 40px; /* Altura da imagem */
+    border-radius: 50%; /* Bordas arredondadas para criar uma imagem de perfil circular */
+    cursor: pointer; /* Cursor do mouse */
+    vertical-align: middle; /* Alinhar verticalmente a imagem */
+}
+
+.post img {
+    max-width: 300px; /* Garante que a largura da imagem não ultrapasse a largura do contêiner pai */
+    height: auto; /* Mantém a proporção original da imagem */
+    display: block; /* Remove espaços em branco extras abaixo das imagens */
+}
+
+/* Estilos para o perfil */
+.user-profile {
+    background-color: #f0f2f5; /* Cor de fundo do perfil */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+.profile-header {
+    text-align: right; /* Alinhar o botão "Editar Perfil" à direita */
+    margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+.profile-picture img {
+    width: 150px; /* Largura da imagem de perfil */
+    height: 150px; /* Altura da imagem de perfil */
+    border-radius: 50%; /* Bordas arredondadas para criar uma imagem de perfil circular */
+    display: block; /* Para centralizar a imagem */
+    margin: 0 auto 20px; /* Margem automática nas laterais e inferior */
+}
+
+.profile-details {
+    text-align: center; /* Alinhar o conteúdo ao centro */
+}
+
+.profile-details p {
+    margin-bottom: 10px; /* Espaçamento inferior entre os parágrafos */
+}
+
+.logout-button {
+    background-color: #ff0000; /* Cor de fundo do botão de logout */
+    color: #fff; /* Cor do texto */
+    border: none; /* Remover borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno */
+    cursor: pointer; /* Cursor do mouse */
+}
+
+.logout-button:hover {
+    background-color: #cc0000; /* Cor de fundo do botão de logout ao passar o mouse */
+}
+
+/* Estilos para o textarea */
+#postContent {
+    width: 1175px; /* largura fixa */
+    height: 130px; /* altura fixa */
+    padding: 10px; /* espaçamento interno */
+    font-size: 16px; /* tamanho de fonte padrão */
+    border: 1px solid #ccc; /* borda */
+    border-radius: 5px; /* bordas arredondadas */
+    resize: none; /* desabilita a redimensionamento */
+}
+
+@media only screen and (max-width: 768px) {
+    #postContent {
+        width: 315px; ; 
+    }
+}
+
