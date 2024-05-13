@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); 
+
+* { 
+	margin: 0; 
+	padding: 0; 
+	font-family: 'Roboto', sans-serif; 
+} 
+
+.Login{ 
+    width: 320px;
+    height: 480px;
+    box-shadow: 0 10px 15px #8c8c8c;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1rem;
+    margin: 50px auto 0;
+} 
+
+.Registro{
+    width: 380px; 
+    height: 480px;
+    box-shadow: 0 10px 15px #8c8c8c;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1rem;
+    margin: 50px auto 0;
+}
+
+.div-primaria, .div-secundaria p{ 
+	font-size: 25px;  
+} 
+
+input { 
+	position: relative; 
+	width: 100%; 
+	height: 45px; 
+    margin-bottom: 10px; 
+	border: 1px solid #8c8c8c; 
+	border-radius: 3px;  
+    font-size: 16px;
+} 
+
+.esque-senha {
+    text-decoration: none;  
+    color: #0A66C3;
+}
+
+.esque-senha:hover{ 
+	color: red; 
+} 
+
+button {
+    width: 100%; 
+    height: 50px;
+    background: #8c8c8c;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #0A66C3;
+}
+
+.ja-conta{
+    padding: 10px 70px;
+}
+
+.Faça-login{
+    color: #0A66C3;
+    text-decoration: none;
+}
+
+.Faça-login:hover{
+	color: red;
+}
+
+.criar-conta{
+    padding: 10px;
+}
+
+.cadastre-se{
+    color: #0A66C3;
+    text-decoration: none;
+}
+
+.cadastre-se:hover{ 
+	color: red; 
+} 
+
+@media screen and (max-width: 600px) {
+    .Login {
+        width: 300px; 
+        height: 400px; 
+        margin: 190px auto 0; 
+    }
+
+    .Registro{
+        width: 320px; 
+        height: 450px; 
+        margin: 180px auto 0; 
+    }
+
+    .ja-conta{
+        padding: 10px 40px;
+    }
+
+    .div-primaria p {
+        font-size: 20px; 
+    }
+
+    input {
+        height: 40px;
+        margin-bottom: 5px; 
+        font-size: 14px; 
+    }
+
+    .criar-conta {
+        padding: 5px; 
+    }
+
+    button {
+        height: 40px; 
+        font-size: 0.9rem; 
+    }
+}
