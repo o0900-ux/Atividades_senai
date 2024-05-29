@@ -411,6 +411,10 @@ class Telacriarvaga(Screen):
             self.selected_tipo_de_vaga = text
 
     def salvar_vaga(self):
+        if not self.verificar_privilegios_usuario():
+            print("Apenas usuários jurídicos podem criar vagas.")
+            return
+
         if not all([self.selected_especificacao, self.selected_cargo, self.selected_local_de_trabalho, self.selected_localidade, self.selected_tipo_de_vaga]):
             print("Por favor, preencha todos os campos.")
             return
@@ -439,6 +443,22 @@ class Telacriarvaga(Screen):
             print("Vaga salva com sucesso.")
         except Exception as e:
             print("Erro ao salvar a vaga:", e)
+
+    def verificar_privilegios_usuario(self):
+        user_name = self.user_name_input.text
+        if not user_name:
+            return False
+
+        try:
+            user_data = database.child("users_juridicos").child(user_name).get().val()
+            
+            if user_data and user_data.get('is_juridico'):
+                return True
+        except Exception as e:
+            print("Erro ao verificar os privilégios do usuário:", e)
+        
+        return False
+
 
 class TelaPublicacoes(Screen):
      pass
@@ -508,7 +528,6 @@ class TelaTrocarSenha(Screen):
 
 class Telanumerostelefone(Screen):
     pass
-
 
 class ItemConfirm(OneLineIconListItem):
     pass
