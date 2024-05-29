@@ -7,6 +7,7 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.metrics import dp
+from kivy.uix.textinput import TextInput
 import os
 from kivy.properties import BooleanProperty
 from kivy.lang import Builder
@@ -21,6 +22,8 @@ from kivy.uix.dropdown import DropDown
 from kivy.uix.button import Button
 from kivy.uix.switch import Switch
 from kivymd.uix.card import MDCard
+from kivy.uix.image import Image
+from kivy.clock import Clock
 import pyrebase
 
 firebaseConfig = {
@@ -36,6 +39,18 @@ firebaseConfig = {
 firebase = pyrebase.initialize_app(firebaseConfig)
 database = firebase.database()
 
+class SplashScreen(Screen):
+    def __init__(self, **kwargs):
+        super(SplashScreen, self).__init__(**kwargs)
+        self.image = Image(source='logo.png', size_hint=(0.9, 0.9),
+                           pos_hint={'center_x': 0.5, 'center_y': 0.55})
+        self.add_widget(self.image)
+
+    def on_enter(self):
+        Clock.schedule_once(self.dismiss_screen, 8)
+
+    def dismiss_screen(self, dt):
+        self.manager.current = 'Entrar_login'  
 
 class TelaEntrarLogin(Screen):
     def Login(self):
@@ -51,7 +66,6 @@ class TelaEntrarLogin(Screen):
             auth = firebase.auth()
             user = auth.sign_in_with_email_and_password(email, senha)
             print("Login realizado com sucesso.")
-            # Navegar para outra tela após login bem-sucedido
             self.manager.current = 'Menu'
         except Exception as e:
             print("Erro ao fazer login:", e)
@@ -71,7 +85,6 @@ class TelaEntrarLoginJuridico(Screen):
             auth = firebase.auth()
             user = auth.sign_in_with_email_and_password(email, senha)
             print("Login realizado com sucesso.")
-            # Navegar para outra tela após login bem-sucedido
             self.manager.current = 'Menu'
         except Exception as e:
             print("Erro ao fazer login:", e)
@@ -138,9 +151,52 @@ class TelaCriarContaJuridico(Screen):
             print("Conta jurídica registrada com sucesso.")
         except Exception as e:
             print("Erro ao registrar a conta jurídica:", e)
+            
+
 
 class TelaMenu(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.on_enter = self.carregar_vagas
+
+    def carregar_vagas(self):
+        try:
+            vagas = database.child("posts").get().val()
+            self.ids.vagas_box.clear_widgets() 
+            if vagas:
+                for key, vaga in vagas.items():
+                    self.adicionar_vaga(vaga)
+            else:
+                print("Nenhuma vaga encontrada.")
+        except Exception as e:
+            print("Erro ao carregar vagas:", e)
+
+    def adicionar_vaga(self, vaga):
+        especificacao = vaga.get('especificacao', 'N/A')
+        cargo = vaga.get('cargo', 'N/A')
+        local_de_trabalho = vaga.get('local_de_trabalho', 'N/A')
+        localidade = vaga.get('localidade', 'N/A')
+        tipo_de_vaga = vaga.get('tipo_de_vaga', 'N/A')
+        sobre_vaga = vaga.get('sobre_vaga', 'N/A')
+        user_name = vaga.get('user_name', 'N/A')
+
+        card = MDCard(
+            orientation='vertical',
+            size_hint=(1, None),
+            height=dp(180),
+            pos_hint={"center_x": 0.5},
+            padding=dp(10),
+            spacing=dp(10),
+        )
+        card.add_widget(MDLabel(text=f"Especificação: {especificacao}"))
+        card.add_widget(MDLabel(text=f"Cargo: {cargo}"))
+        card.add_widget(MDLabel(text=f"Local de Trabalho: {local_de_trabalho}"))
+        card.add_widget(MDLabel(text=f"Localidade: {localidade}"))
+        card.add_widget(MDLabel(text=f"Tipo de Vaga: {tipo_de_vaga}"))
+        card.add_widget(MDLabel(text=f"Sobre: {sobre_vaga}"))
+        card.add_widget(MDLabel(text=f"usuario: {user_name}"))
+
+        self.ids.vagas_box.add_widget(card)
 
 class Telacriarvaga(Screen):
     especificacao = [
@@ -281,6 +337,10 @@ class Telacriarvaga(Screen):
         self.selected_local_de_trabalho = None
         self.selected_localidade = None
         self.selected_tipo_de_vaga = None
+        self.user_name = None
+
+        self.user_name_input = TextInput(hint_text='Nome do usuário')
+        self.add_widget(self.user_name_input)
 
     def show_especificacao(self, main_button):
         dropdown = DropDown()
@@ -335,11 +395,10 @@ class Telacriarvaga(Screen):
     def select_option(self, dropdown, text, main_button, option_type):
         main_button.text = text
         dropdown.dismiss()
-        # Mantendo a largura fixa
+
         main_button.size_hint_x = None
         main_button.width = dp(200)
 
-        # Salva a seleção
         if option_type == 'especificacao':
             self.selected_especificacao = text
         elif option_type == 'cargo':
@@ -357,6 +416,11 @@ class Telacriarvaga(Screen):
             return
         
         sobre_vaga = self.ids.sobre_vaga.text
+        user_name = self.user_name_input.text
+
+        if not user_name:
+            print("Por favor, preencha o nome do usuário.")
+            return
 
         try:
             data = {
@@ -365,13 +429,16 @@ class Telacriarvaga(Screen):
                 "local_de_trabalho": self.selected_local_de_trabalho,
                 "localidade": self.selected_localidade,
                 "tipo_de_vaga": self.selected_tipo_de_vaga,
-                "sobre_vaga": sobre_vaga
+                "sobre_vaga": sobre_vaga,
+                "user_name": user_name 
             }
+            if not database:
+                print("Erro: Conexão com o banco de dados não configurada.")
+                return
             database.child("posts").push(data)
             print("Vaga salva com sucesso.")
         except Exception as e:
             print("Erro ao salvar a vaga:", e)
-
 
 class TelaPublicacoes(Screen):
      pass
