@@ -959,6 +959,17 @@ ScreenManager:
                     height: self.minimum_height
                     line_color_focus: app.theme_cls.primary_color
                     line_color_normal: app.theme_cls.primary_color
+                MDTextField:
+                    id: user_name
+                    hint_text: "nome do usuario"
+                    multiline: True
+                    mode: "rectangle"
+                    max_text_length: 1500
+                    font_size: sp(14)
+                    size_hint_y: None
+                    height: self.minimum_height
+                    line_color_focus: app.theme_cls.primary_color
+                    line_color_normal: app.theme_cls.primary_color
                 MDRaisedButton:
                     id: btn_publicar
                     text: 'Publicar'
