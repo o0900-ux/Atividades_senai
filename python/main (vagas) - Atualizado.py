@@ -402,8 +402,6 @@ class Telacriarvaga(Screen):
         sobre_vaga = self.ids.sobre_vaga.text
 
         try:
-            user = auth.current_user
-            user_id = user['localId']
             user_info = database.child("users").child(user_id).get().val()  
             user_name = user_info.get("nome", "Nome não encontrado")  
 
@@ -414,7 +412,6 @@ class Telacriarvaga(Screen):
                 "localidade": self.selected_localidade,
                 "tipo_de_vaga": self.selected_tipo_de_vaga,
                 "sobre_vaga": sobre_vaga,
-                "user_id": user_id,
                 "user_name": user_name  
             }
 
