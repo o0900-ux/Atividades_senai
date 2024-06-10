@@ -30,7 +30,7 @@ public class Braz extends JFrame {
     private boolean mostrarPontuacao = true;
     private boolean pausado = false;
     private boolean easyMode = false;
-    private static boolean chaveVerificada = false; // Variável para armazenar o estado da chave
+    private static boolean chaveVerificada = false; 
 
     // Chave de ativação
     private static final String CHAVE_ATIVACAO = "HJUY3RT5Y6RT0POGQWER9IUYT";
@@ -43,7 +43,7 @@ public class Braz extends JFrame {
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        carregarPropriedades(); // Carrega o estado da chave de ativação ao iniciar o jogo
+        carregarPropriedades(); 
         if (!chaveVerificada) {
             verificarChaveAtivacao();
         }
@@ -101,7 +101,7 @@ public class Braz extends JFrame {
         chaveInserida = chaveInserida.replaceAll("-", "");
         if (chaveInserida != null && chaveInserida.equals(CHAVE_ATIVACAO)) {
             chaveVerificada = true;
-            salvarPropriedade(CHAVE_VERIFICADA_PROP, "true"); // Salva o estado da chave no arquivo de propriedades
+            salvarPropriedade(CHAVE_VERIFICADA_PROP, "true"); 
         } else {
             JOptionPane.showMessageDialog(null, "Chave de ativação inválida. Tente novamente.");
             System.exit(0);
