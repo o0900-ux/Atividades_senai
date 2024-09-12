@@ -31,7 +31,7 @@
     .buttons i {float: right;}
     .btn {width: 100%; font-size: 1.5em; text-align: left; cursor: pointer; padding: 5%; }
     .btn-cadastrar { color: #130400;}
-    .btn-sobre {color:#868484 ; margin-top: 2%;}
+    .btn-sobre {color:#0e0d0d ; margin-top: 2%;}
     /* SERVIÇOS */
     .servico {width: 100%; text-align: left; margin-bottom: 3%;}
     .servico img {border-radius: 7px 7px 0 0;}
