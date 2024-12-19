@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pacientes MAGNUS</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Pacientes MAGNUS</h1>
+        
+        <!-- Formulário de Login -->
+        <form id="loginForm">
+            <label for="loginEmail">E-mail:</label>
+            <input type="email" id="loginEmail" required>
+            
+            <label for="loginSenha">Senha:</label>
+            <input type="password" id="loginSenha" required>
+            
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Formulário de Cadastro -->
+        <form id="cadastroForm" style="display: none;">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" required>
+            
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
+            
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" required>
+            
+            <label for="nascimento">Data de Nascimento:</label>
+            <input type="text" id="nascimento" placeholder="dd/mm/aaaa" required>
+            
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" required>
+            
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" required>
+            
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" required>
+            
+            <label for="historico">Histórico Médico:</label>
+            <input type="text" id="historico" required>
+            
+            <label for="foto">Carregar Foto (opcional):</label>
+            <input type="file" id="foto" accept="image/*">
+            
+            <button type="submit">Cadastrar Paciente</button>
+        </form>
+
+        <div id="mensagem"></div>
+    </div>
+    
+    <script>
+        // Configurações do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyD4yp2qXBKP2ucmIgVicLVcm0G-EDimyJU",
+            authDomain: "magnus-saude.firebaseapp.com",
+            projectId: "magnus-saude",
+            storageBucket: "magnus-saude.appspot.com",
+            messagingSenderId: "990674908965",
+            appId: "1:990674908965:web:920811faf9b2d187760ccc",
+            measurementId: "G-3KM9Y50Y6E"
+        };
+
+        // Inicializa o Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        // Validação de CPF
+        function validarCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            if (cpf.length !== 11 || /^[0-9]{11}$/.test(cpf) && new Set(cpf).size === 1) {
+                return false;
+            }
+            let soma = 0;
+            let resto;
+            for (let i = 1; i <= 9; i++) {
+                soma += parseInt(cpf[i - 1]) * (11 - i);
+            }
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) {
+                resto = 0;
+            }
+            if (resto !== parseInt(cpf[9])) {
+                return false;
+            }
+            soma = 0;
+            for (let i = 1; i <= 10; i++) {
+                soma += parseInt(cpf[i - 1]) * (12 - i);
+            }
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) {
+                resto = 0;
+            }
+            return resto === parseInt(cpf[10]);
+        }
+
+        // Login do usuário
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value;
+            const senha = document.getElementById('loginSenha').value;
+
+            try {
+                await auth.signInWithEmailAndPassword(email, senha);
+                document.getElementById('mensagem').innerText = "Login realizado com sucesso!";
+                document.getElementById('cadastroForm').style.display = "block"; // Exibe o formulário de cadastro
+                document.getElementById('loginForm').style.display = "none"; // Esconde o formulário de login
+            } catch (error) {
+                document.getElementById('mensagem').innerText = `Erro ao fazer login: ${error.message}`;
+            }
+        });
+
+        // Cadastrar Paciente
+        document.getElementById('cadastroForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const dataNascimento = document.getElementById('nascimento').value;
+            const cpf = document.getElementById('cpf').value;
+            const telefone = document.getElementById('telefone').value;
+            const endereco = document.getElementById('endereco').value;
+            const historico = document.getElementById('historico').value;
+            const foto = document.getElementById('foto').files[0];
+
+            // Validações
+            if (!validarCPF(cpf)) {
+                document.getElementById('mensagem').innerText = "CPF inválido.";
+                return;
+            }
+
+            // Cria usuário no Firebase Auth
+            try {
+                const usuario = await auth.createUserWithEmailAndPassword(email, senha);
+                const uid = usuario.user.uid;
+
+                // Prepara dados do paciente
+                const paciente = {
+                    nome,
+                    email,
+                    data_nascimento: dataNascimento,
+                    cpf: cpf.replace(/\D/g, ''),
+                    telefone,
+                    endereco,
+                    historico_medico: historico,
+                    data_cadastro: new Date().toISOString(),
+                };
+
+                // Adiciona foto se houver
+                if (foto) {
+                    const timestamp = Date.now();
+                    const storageRef = storage.ref(`pacientes/foto_${timestamp}.jpg`); // Cria um nome de arquivo único
+                    await storageRef.put(foto); // Tente o upload
+                    paciente.foto_url = await storageRef.getDownloadURL(); // Obtenha a URL após o upload
+                }
+
+                // Salva paciente no Firestore
+                await db.collection('pacientes').doc(uid).set(paciente);
+                document.getElementById('mensagem').innerText = "Paciente cadastrado com sucesso!";
+            } catch (error) {
+                document.getElementById('mensagem').innerText = `Erro: ${error.message}`;
+            }
+        });
+
+        // Função para obter a lista de imagens de um paciente
+        async function obterImagensPaciente(uid) {
+            const doc = await db.collection('pacientes').doc(uid).get();
+            if (doc.exists) {
+                const paciente = doc.data();
+                console.log("Imagens do paciente:", paciente.foto_url);
+                // Exiba as imagens na interface do usuário (pode ser implementado)
+            } else {
+                console.log("Paciente não encontrado.");
+            }
+        }
+    </script>
+</body>
+</html>

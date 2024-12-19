@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnus+</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            position: relative; 
+            -webkit-user-select: none;
+            -moz-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
+        }
+
+        .card-background {
+            position: absolute; 
+            width: 100%;
+            background: linear-gradient(to right, rgb(72, 130, 180), rgb(54, 109, 150), rgb(30, 80, 120));
+            height: 10em; 
+            z-index: 0; 
+        }
+
+        /* cartão do usuário */
+        .card {
+            background: linear-gradient(to right, rgb(72, 130, 180), rgb(54, 109, 150), rgb(30, 80, 120));
+            width: 90%; 
+            max-width: 350px; 
+            height: 12em; 
+            border-radius: 15px;
+            color: #ffffff; 
+            padding: 20px;
+            margin-top: 3em;
+            position: relative; 
+            z-index: 1; 
+            display: flex;
+            flex-direction: column; 
+            box-shadow: 0 4px 15px rgb(0, 0, 0); 
+        }
+
+        .header {
+            display: flex; 
+            align-items: center; 
+        }
+
+        .avatar-container {
+            margin-right: 10px; 
+        }
+
+        .avatar {
+        background-color: #fff; 
+        width: 5em;
+        height: 5em;
+        border-radius: 50%;
+        object-fit: cover; 
+        }
+
+        .app-name {
+        font-family:  'Titillium Web', sans-serif; 
+        font-size: 15px;
+        font-weight: bold;
+        margin-left: 5em; 
+        }
+
+
+        /* Informações do usuário */
+        .user-info {
+            margin-top: 1.5em; 
+        }
+
+        .user-info h1 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .user-info p {
+            font-size: 14px;
+        }
+
+        /* Menu principal */
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            overflow-y: auto; 
+            width: 100%; 
+        }
+
+        .menu-item {
+            background: linear-gradient(to right, rgb(72, 130, 180), rgb(54, 109, 150), rgb(30, 80, 120)); 
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        .icon {
+            font-size: 60px; 
+            margin-bottom: 10px;
+        }
+
+        /* Aumentar o tamanho dos ícones do menu principal */
+        .material-icons {
+            font-size: 60px; 
+        }
+
+        a {
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+        /* Menu fixo inferior */
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            background-color: #001f3fe5; 
+            padding: 10px 0;
+            border-top: 1px solid #ccc;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .footer-item {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+            color:  white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-item.disabled {
+            color: #b0b0b0d3; 
+        }
+
+        .footer-item a {
+            text-decoration: none; 
+            color: inherit; 
+        }
+
+        /* ícones no menu inferior */
+        .footer-item .material-icons {
+            font-size: 24px; 
+        }
+
+        /*  Responsividade */
+        @media (max-width: 600px) {
+            .menu {
+                height: auto; 
+                padding-bottom: 80px;
+            }
+
+            .footer-item {
+                font-size: 12px; 
+            }
+
+            .icon {
+                font-size: 50px; 
+            }
+
+            .material-icons {
+                font-size: 50px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-background"></div>
+    <!-- Cartão do usuário -->
+    <div class="card">
+        <div class="header">
+            <div class="avatar-container">
+                <img class="avatar" id="userAvatar" src="p.png" alt="Avatar do Usuário">
+            </div>
+            <div class="app-name">
+                <h2 style="font-size: 26px; font-family: Titillium Web, sans-serif;">MAGNUS+</h2>
+            </div>
+        </div>
+        <div class="user-info">
+            <h1>Paulo Dos Santos Mello</h1>
+            <p>000.000.000-00</p>
+        </div>
+    </div>
+
+    <!-- Menu principal -->
+    <div class="menu">
+        <div class="menu-item">
+            <a href="#">
+            <div class="icon"><i class="material-icons">medical_services</i></div>
+            <p>Marca consulta</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#">
+            <div class="icon"><i class="material-icons">local_hospital</i></div>
+            <p>Minhas consultas</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="user.html">
+            <div class="icon"><i class="material-icons">person</i></div>
+            <p>Dados do usuário</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#">
+            <div class="icon"><i class="material-icons">info</i></div>
+            <p>Informações</p> 
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu fixo inferior -->
+    <div class="footer">
+        <div class="footer-item">
+            <a href="home.html">
+                <i class="material-icons">home</i><br>Página inicial
+            </a>
+        </div>
+        <div class="footer-item disabled">
+            <a href="#">
+                <i class="material-icons">notifications</i><br>Notificações
+            </a>
+        </div>
+        <div class="footer-item disabled">
+            <a href="index.html">
+                <i class="material-icons">settings</i><br>Configurações
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+<script src="app.js"></script>

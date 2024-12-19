@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnus+</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+    </style>
+    <link rel="stylesheet" href="/Css/home.css">
+</head>
+<body>
+    <div class="card-background"></div>
+    <div class="card">
+        <div class="header">
+            <div class="avatar-container">
+                <img class="avatar" id="userAvatar" src="/Html/Img/p.png" alt="Avatar do Usuário">
+            </div>
+            <div class="app-name">
+                <h2 style="font-size: 26px; font-family: Titillium Web, sans-serif;">MAGNUS+</h2>
+            </div>
+        </div>
+        <div class="user-info">
+            <h1 id="userName"></h1>
+            <p id="userCpf"></p>
+        </div>
+    </div>
+
+    <!-- Menu principal -->
+    <div class="menu">
+        <div class="menu-item">
+            <a href="#">
+                <div class="icon"><i class="material-icons">medical_services</i></div>
+                <p>Marca consulta</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="/Html/notificacoes.htm">
+                <div class="icon"><i class="material-icons">local_hospital</i></div>
+                <p>Minhas consultas</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="/Html/user.html">
+                <div class="icon"><i class="material-icons">person</i></div>
+                <p>Dados do usuário</p>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#">
+                <div class="icon"><i class="material-icons">info</i></div>
+                <p>Informações</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu fixo inferior -->
+    <div class="footer">
+        <div class="footer-item">
+            <a href="#">
+                <i class="material-icons">home</i><br>Página inicial
+            </a>
+        </div>
+        <div class="footer-item disabled">
+            <a href="/Html/notificacoes.html">
+                <i class="material-icons">notifications</i><br>Notificações
+            </a>
+        </div>
+        <div class="footer-item disabled">
+            <a href="/Html/confg.html">
+                <i class="material-icons">settings</i><br>Configurações
+            </a>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="/app.js"></script>
+    <script>
+        // Configuração do Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyD4yp2qXBKP2ucmIgVicLVcm0G-EDimyJU",
+            authDomain: "magnus-saude.firebaseapp.com",
+            projectId: "magnus-saude",
+            storageBucket: "magnus-saude.appspot.com",
+            messagingSenderId: "990674908965",
+            appId: "1:990674908965:web:920811faf9b2d187760ccc",
+            measurementId: "G-3KM9Y50Y6E"
+        };
+
+        // Inicializa o Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        var auth = firebase.auth();
+
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + d.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            console.log(`Cookie set: ${name}=${value}`);
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Função para formatar CPF
+        function formatCPF(cpf) {
+            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        // Função para buscar dados do usuário
+        function fetchUserData(uid) {
+            const nome = getCookie("nome");
+            const cpf = getCookie("cpf");
+            const foto = getCookie("foto");
+
+            if (nome && cpf && foto) {
+                document.getElementById('userName').innerText = nome;
+                document.getElementById('userCpf').innerText = formatCPF(cpf);
+                document.getElementById('userAvatar').src = foto;
+                console.log("Dados do usuário carregados dos cookies.");
+                return;
+            }
+
+            console.log("Dados não encontrados nos cookies, buscando no Firestore...");
+            db.collection("pacientes").doc(uid).get().then(function(doc) {
+                if (doc.exists) {
+                    var userData = doc.data();
+                    document.getElementById('userName').innerText = userData.nome;
+                    document.getElementById('userCpf').innerText = formatCPF(userData.cpf);
+                    document.getElementById('userAvatar').src = userData.foto_url;
+
+                    setCookie("nome", userData.nome, 7);
+                    setCookie("cpf", userData.cpf, 7);
+                    setCookie("foto", userData.foto_url, 7);
+                    console.log("Dados do usuário carregados do Firestore e salvos nos cookies.");
+                } else {
+                    console.log("Nenhum documento encontrado para o UID:", uid);
+                }
+            }).catch(function(error) {
+                console.error("Erro ao buscar documento:", error);
+            });
+        }
+
+        // Função principal
+        function main() {
+            auth.onAuthStateChanged(function(user) {
+                if (user) {
+                    var uid = user.uid;
+                    console.log("Usuário autenticado:", user.email);
+                    fetchUserData(uid);
+                } else {
+                    console.log("Usuário não autenticado. Redirecionando para login.");
+                    window.location.href = "../index.html"; 
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            main();
+        });
+    </script>
+</body>
+</html>

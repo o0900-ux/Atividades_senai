@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário - Magnus+</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+    </style>
+    <link rel="stylesheet" href="/Css/user.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="settings-icon">
+                <a href="/Html/home.html">
+                    <i class="material-icons">arrow_back</i>
+                </a>
+            </div>
+            <h1 style="font-size: 26px; font-family: Titillium Web, sans-serif;">Suas Informações</h1>
+        </div>
+
+        <div class="profile-photo">
+            <img id="userAvatar" src="/Html/Img/p.png" alt="Foto do Usuário">
+        </div>
+
+        <div class="user-info">
+            <p></p>
+            <p class="user-name" id="userName"><strong></strong></p>
+
+            <div class="user-details">
+                <div class="user-detail-item">
+                    <p>CPF</p>
+                    <p><strong id="userCpf"></strong></p>
+                </div>
+                <div class="user-detail-item">
+                    <p>Data de nascimento</p>
+                    <p><strong id="userBirthDate"></strong></p>
+                </div>
+            </div>
+
+            <p>Endereço</p>
+            <p><strong id="userAddress"></strong></p>
+
+            <p>Data de cadastro</p>
+            <p><strong id="userRegistrationDate"></strong></p>
+            <hr><br>
+            <p><strong>Seu código QR</strong></p>
+            <p>Aqui você pode acessar rapidamente os seus dados através do código QR abaixo, tornando a visualização e o compartilhamento mais simples e eficiente.</p>
+        </div>
+        
+        <div class="qr-section" >
+            <p><strong>Código QR</strong></p>
+            <div class="qr-code-container">
+                <img id="qr-code" src="" alt="QR Code">
+            </div>
+            <div class="qr-info">
+                <p id="qr-code-date"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="/Js/user.js"></script>
+    <script>
+       
+    </script>
+</body>
+</html>
+<script src="/app.js"></script>
+

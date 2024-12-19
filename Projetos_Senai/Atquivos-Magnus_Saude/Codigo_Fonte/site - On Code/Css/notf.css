@@ -1,0 +1,117 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f4f8; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    position: relative; 
+    user-select: none; 
+}
+
+.card-background {
+    border-radius: 0 0 12px 12px;
+    position: absolute; 
+    width: 100%;
+    background: linear-gradient(to right, rgb(72, 130, 180), rgb(54, 109, 150), rgb(30, 80, 120));
+    height: 5em; 
+    z-index: 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    position: fixed;
+}
+
+.texto {
+    font-size: 1.5em;
+    color: #f0f4f8;
+    margin-top: 1em; 
+}
+
+.card {
+    color: black; 
+    margin-top: 5.5em;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    height: 200px; 
+}
+
+.card .fas {
+    margin-top: 2.5em;
+    font-size: 6em;
+    margin-bottom: 0.2em; 
+    color: rgba(72, 130, 180, 0.7);
+}
+
+.card p {
+    font-size: 1.2em; 
+    color: #3b3b3b; 
+    text-align: center; 
+}  
+
+/* Menu fixo inferior */
+.footer {
+    box-shadow: 0 -2px 50px rgb(0, 0, 0);
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #001f3fe5; 
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.footer-item {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    color:  white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-item.disabled {
+    color: #b0b0b0d3; 
+}
+
+.footer-item a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+/* ícones no menu inferior */
+.footer-item .material-icons {
+    font-size: 24px; 
+}
+
+/*  Responsividade */
+@media (max-width: 600px) {
+    .menu {
+        height: auto; 
+        padding-bottom: 80px;
+    }
+
+    .footer-item {
+        font-size: 12px; 
+    }
+
+    .icon {
+        font-size: 50px; 
+    }
+
+    .material-icons {
+        font-size: 50px; 
+    }
+}

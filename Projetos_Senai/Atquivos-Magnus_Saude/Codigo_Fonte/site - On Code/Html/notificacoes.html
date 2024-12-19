@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações - Magnus+</title>
+    <link rel="stylesheet" href="/Css/notf.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="card-background">
+        <h2 class="texto">Notificações</h2>
+    </div>
+
+    <!-- Notificações-->
+    <div class="card">
+        <i class="fas fa-inbox" title="Sem novas mensagens"></i>
+        <p>Sem notificações no momento</p>
+    </div>
+
+    <!-- Menu fixo inferior -->
+    <div class="footer">
+        <div class="footer-item disabled">
+            <a href="/Html/home.html">
+                <i class="material-icons">home</i><br>Página inicial
+            </a>
+        </div>
+        <div class="footer-item">
+            <a href="#">
+                <i class="material-icons">notifications</i><br>Notificações
+            </a>
+        </div>
+        <div class="footer-item disabled">
+            <a href="/Html/confg.html">
+                <i class="material-icons">settings</i><br>Configurações
+            </a>
+        </div>
+    </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="/Js/notf.js"></script>
+<script src="/app.js"></script>
+</html>

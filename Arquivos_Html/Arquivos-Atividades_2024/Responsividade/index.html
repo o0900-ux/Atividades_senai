@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv=" -UA-Compatible" content="IE=edge">
+<title>Anas platyrhynchos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel= 'https://fonts.googleaps.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+    * {margin: 0; padding: 0; font-size: 100%; border: none; outline: none; font-weight: 300; box-sizing: border-box;
+    font-family: 'Lato', sans-serif;}
+    body {background-color: #f5f5f5;}
+    a {text-decoration: none;}
+    ul {list-style: none;}
+    img {max-width: 100%;}
+    
+    .container {width: 100%; float: left; padding: 3% 4%; text-align: center;}
+    
+    .bg-gradient {background: linear-gradient(to right,#f5f3f3,#db8505);}
+    .bg-black {background-color: #df5e13; }
+    .bg-white {background-color: #fff;}
+    
+    .radius {border-radius: 7px;}
+    /* CABEÇALHO */
+    .logo {width: 16px; height: 36px; float: left; font-size: 55px; color: #da6709;}
+    .btn-menu {width: 86px; height: 56px; float: right; text-align: center; color: #fff; border-radius:56px; cursor: pointer;}
+    /* MENU */
+    .menu {display:none; width: 100%; height: 100%; position: fixed; background-color: rgba(0,0,0,0.9); top: 0; left: 0;}
+    .btn-close {font-size: 1.5em; color: #fff; float: right; cursor: pointer; margin: 2% 3% 0 0;}
+    .menu ul {width: 100%; float: left; text-align: center;}
+    .menu li {padding: 1.5%;}
+    .menu li a {font-size: 2em; color: #0c0b0b; padding: 1.5% 3%;}
+    .menu li a:hover {border:1px solid #da6709;}
+    /* BANNER */
+    .banner {background: url(b.png) no-repeat fixed;}
+    .title {width: 100%;}
+    .title h2 {font-size: 2.5em; color: #f2eeee; font-weight: 700;}
+    .title h3 {font-size: 1.5em; color: #f9f4f4;}
+    .buttons {width: 100%; margin-top: 2%;}
+    .buttons i {float: right;}
+    .btn {width: 100%; font-size: 1.5em; text-align: left; cursor: pointer; padding: 5%; }
+    .btn-cadastrar { color: #130400;}
+    .btn-sobre {color:#0e0d0d ; margin-top: 2%;}
+    /* SERVIÇOS */
+    .servico {width: 100%; text-align: left; margin-bottom: 3%;}
+    .servico img {border-radius: 7px 7px 0 0;}
+    .inner {padding: 7%;}
+    .inner a {font-size: 1.5em; color: #130400; font-weight: 700; }
+    .inner h4 {font-size: 1.2em; color: #130400; margin-top: 2%; }
+    .inner p {margin-top: 6%; color: #130400; line-height: 1.5em;}
+    /* NEWSLETTER */
+    .newsletter h2 {font-size: 1.5em; color: #fff; font-weight: 700;}
+    .newsletter h3 {color: #fff;}
+    .newsletter form {margin-top: 2%;}
+    .newsletter input {width: 100%; color: #0d0d0d; border: 1px solid rgb(7, 7, 7); padding: 5%; }
+    .newsletter button {width: 100%; color:#130400; padding: 5%; cursor: pointer; margin-top: 2%; }
+    /* RODAPÉ */
+    .social-icons a {font-size: 1.5em; color: rgba(17, 17, 17, 0.7); margin-right: 3%;}
+    .social-icons a:last-child {margin-right: 0;}
+    .social-icons a:hover {color: rgb(210, 9, 9);}
+    .copyright {color: rgba(3, 3, 3, 0.7); margin-top:2%;}
+    /* ========== MOBILE FIRST ==========*/
+    /* SMALL DEVICES - SMARTPHONES */
+    @media screen and (max-width: 480px) {
+    .logo {width: 16px; height: 36px; float: left; font-size: 0px; color: #da6709;}
+    .btn {font-size: 2em;}
+    }
+    /* SMALL DEVICES - TABLETS*/
+    @media screen and (min-width: 768px) {
+    .servico {width: 49%; float: left; margin-right: 2%;}
+    .servico:nth-child(2){margin-right: 0;}
+    .newsletter h2 {font-size: 2em;}
+    .newsletter h3 {font-size: 1.5em;}
+    .newsletter input {width: 70%; padding: 2%; float: left; margin-right: 1%;}
+    .newsletter button {width: 29%; padding: 2%; float: right; margin-top: 0;}
+    }
+    /* MEDIUM DEVICES - TABLETS & DESKTOPS*/
+    @media screen and (min-width: 960px) {
+    .title {width: 70%; float: left; text-align: left;}
+    .title h2 {font-size: 3em;}
+    .title h3 {font-size: 2em;}
+    .buttons {width: 30%; float: right; margin-top: 0; }
+    .servico {width: 32%; }
+    .servico:nth-child(2){margin-right: 2%;}
+    .servico:nth-child(3){margin-right: 0;}
+    .newsletter input {width: 60%; float: none;}
+    .newsletter button {width: 20%; float: none;}
+    }
+    /* LARGE DEVICES - WIDE SCREENS*/
+    @media screen and (min-width: 1280px){}
+    .btn-menu {display: none;}
+    .btn-close {display: none;}
+    .menu {width: auto; height: 56px; line-height: 56px; float: right; background-color: #f5f5f5;
+    display: block !important; position: static;}
+    .menu li {padding: 0; float: left;}
+    .menu li a {color:#130400; font-size: 1em; padding: 15px; }
+</style>
+<body>
+<!-- CABEÇALHO -->
+<header class="cabecalho container">
+<a href="index.html"><h1 class="logo" >Patinhos</h1></a>
+<button class="btn-menu bg-gradient"><i class="fa fa-bars fa-lg"></i></button>
+<nav class="menu">
+<a class="btn-close"><i class="fa fa-times"></i></a>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Serviços</a></li>
+<li><a href="#">Quem somos</a></li>
+<li><a href="#">Contato</a></li>
+</ul>
+</nav>
+</header>
+<!-- BANNER -->
+<div class="banner container">
+<div class="title">
+<h2>Anas platyrhynchos</h2>
+<h3>O melhor amigo do homem não é o cachorro, mas sim os patos!</h3>
+</div>
+<div class="buttons">
+<button class="btn btn-cadastrar bg-white radius"> Compre um Pato <i class="fa fa-arrow-circle-right"></i></button>
+<button class="btn btn-sobre bg-black radius"> Saiba mas <i class="fa fa-question-circle"></i></button>
+</div>
+</div>
+<!-- SERVICOS -->
+<main class="servicos container">
+<article class="servico bg-white radius">
+<a href="#"><img src="m.jpg" alt="Campanhas publicitárias"></a>
+<div class="inner">
+<a href="#"> A Surpreendente Amizade dos Patos </a>
+<h4>A Surpreendente Amizade dos Patos</h4>
+<p>Ao longo da história, os cães foram celebrados como os "melhores amigos do homem", mas e se te dissermos que os patos também têm um lugar especial no coração humano?... </p>
+</div>
+</article>
+<article class="servico bg-white radius">
+<a href="#"><img src="l.jpeg" alt="Marketing Digital"></a>
+<div class="inner">
+<a href="#"> Os Patos como Companheiros Inesperados</a>
+<h4>Os Patos como Companheiros Inesperados</h4>
+<p>Embora o cachorro seja tradicionalmente conhecido como o melhor amigo do homem, os patos têm conquistado seu próprio espaço como companheiros inesperados e encantadores. A interação com esses animais pode revelar uma amizade diferente, mas igualmente valiosa.[...]
+    </p>
+</div>
+</article>
+<article class="servico bg-white radius">
+<a href="#"><img src="i.jpeg" alt="Criação de Sites"></a>
+<div class="inner">
+<a href="#"> O Encanto dos Patos na Vida Cotidiana</a>
+<h4> O Encanto dos Patos na Vida Cotidiana</h4>
+<p>É fácil entender por que os cães são frequentemente vistos como os melhores amigos do homem, mas os patos também têm seu próprio encanto que não deve ser subestimado. Esses animais, com suas cores vibrantes e comportamento charmoso, oferecem uma forma de companhia que pode ser tão gratificante quanto a de um cachorro.[...]</p>
+</div>
+</article>
+</main>
+<!-- NEWSLETTER -->
+<section class="newsletter container bg-black">
+<h2> Inscreva-se agora! </h2>
+<h3> Receba novidades, dicas sobre patos e muito mais </h3>
+<form>
+<input class="bg-black radius" type="email" name="email" placeholder="Seu email">
+<button class="bg-white radius"> Cadastrar </button>
+</form>
+</section>
+<!-- RODAPÉ -->
+<footer class="rodape container bg-gradient">
+<p class="copyright">
+Copyright © Compre um pato 2024. Todos os direitos reservados.
+</footer>
+</body>
+</html>

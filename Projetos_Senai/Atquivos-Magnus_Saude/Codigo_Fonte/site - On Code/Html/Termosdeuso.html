@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso - Magnus+</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f0f4f8; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        position: relative; 
+        -webkit-user-select: none;
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+        user-select: none; 
+    }
+
+    .card-background {
+        border-radius: 0 0 12px 12px;
+        position: absolute; 
+        width: 100%;
+        background: linear-gradient(to right, rgb(72, 130, 180), rgb(54, 109, 150), rgb(30, 80, 120));
+        height: 5em; 
+        z-index: 0; 
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        position: fixed;
+    }
+
+    .material-icons {
+        font-size: 25px; 
+        color: white;
+        align-self: flex-start; 
+        margin-top: 0.5em;
+        margin-left: 0.3em;
+    }
+
+    .texto {
+        color: #f0f4f8;
+        margin-top: 0.3em; 
+    }
+
+    .card {
+    color: black; 
+    margin-top: 5.5em;
+    align-self: flex-start; 
+    align-self: flex-start; 
+    }
+</style>
+<body>
+    <div class="card-background">
+        <i class="material-icons" id="tu">arrow_back</i>
+        <h2 class="texto">Termos de Uso - Magnus+</h2>
+    </div>
+
+    <div class="card">
+        <strong>1. Aceitação dos Termos</strong>
+        <p>Ao utilizar o aplicativo Magnus+, você concorda com os Termos de Uso descritos neste documento, incluindo o uso e o tratamento de seus dados pessoais, conforme descrito abaixo. Caso discorde de alguma parte deste documento, recomendamos que não utilize o aplicativo.</p>
+        <br>
+        <strong>2. Coleta de Dados Pessoais</strong>
+        <p>O aplicativo Magnus+ coleta e armazena os seguintes dados pessoais:
+            <br><br>
+            1.1 Nome completo
+            <br><br>
+            1.2 CPF
+            <br><br>
+            1.3 Telefone
+            <br><br>
+            1.4 Endereço residencial
+            <br><br>
+            1.5 Data de nascimento
+            <br><br>
+            1.6 Histórico médico</p>
+        <br>
+        <strong>3. Uso dos Dados Pessoais</strong>
+        <p>Seus dados pessoais serão utilizados para as seguintes finalidades:
+            <br><br>
+            1.Agendamento de consultas na UBS sem necessidade de filas físicas;
+            <br><br>
+            2.Acesso ao histórico de consultas e informações médicas diretamente pelo aplicativo;
+            <br><br>
+            3.Notificações de agendamento, cancelamento ou alterações em suas consultas;
+            <br><br>
+            4.Melhorar a qualidade do serviço oferecido pela UBS.
+            <br><br>
+            Seus dados pessoais não serão compartilhados com terceiros sem sua permissão, exceto quando exigido por lei.</p>
+        <br>
+        <strong>4. Armazenamento e Proteção de Dados</strong>
+        <p>O Magnus+ utiliza medidas de segurança para proteger seus dados contra acessos não autorizados, perda, alteração ou divulgação. No entanto, é de sua responsabilidade garantir a proteção e sigilo das credenciais de acesso ao aplicativo.</p>
+        <br>
+        <strong>5. Direitos do Usuário</strong>
+        <p>Em conformidade com a LGPD, você tem os seguintes direitos em relação aos seus dados pessoais:
+            <br><br>
+            1.1 Solicitar a confirmação da existência de tratamento de dados;
+            <br><br>
+            1.2 Acessar os dados armazenados;
+            <br><br>
+            1.3 Corrigir dados incompletos, inexatos ou desatualizados;
+            <br><br>
+            1.4 Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários;
+            <br><br>
+            1.5 Revogar o consentimento dado para o tratamento dos dados.
+            <br><br>
+            Para exercer esses direitos, entre em contato com a UBS responsável pelo seu cadastro ou utilize os canais de atendimento do Magnus+.
+            </p>
+        <br>
+        <strong>6. Fila Digital</strong>
+        <p>Embora o objetivo do aplicativo seja evitar filas físicas, pode haver um tempo de espera digital, dependendo da quantidade de usuários agendando consultas ao mesmo tempo.</p>
+        <br>
+        <strong>7. Alterações nos Termos de Uso</strong>
+        <p>Estes Termos de Uso podem ser atualizados a qualquer momento, sendo responsabilidade do usuário revisá-los regularmente.</p>
+        <br>
+        <strong>8. Contato</strong>
+        <p>Para dúvidas, reclamações ou solicitações, entre em contato pelo e-mail: <a href="mailto:suporte@magnusmais.com">suporte@magnusmais.com</a>
+            ou diretamente com sua UBS.</p>
+        <br>
+    </div>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script>
+var firebaseConfig = {
+    apiKey: "AIzaSyD4yp2qXBKP2ucmIgVicLVcm0G-EDimyJU",
+    authDomain: "magnus-saude.firebaseapp.com",
+    projectId: "magnus-saude",
+    storageBucket: "magnus-saude.appspot.com",
+    messagingSenderId: "990674908965",
+    appId: "1:990674908965:web:920811faf9b2d187760ccc",
+    measurementId: "G-3KM9Y50Y6E"
+};
+
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+var auth = firebase.auth();
+
+function main() {
+auth.onAuthStateChanged(function(user) {
+    if (user) {
+        console.log("Usuário autenticado:", user.email);
+    } else {
+        console.log("Usuário não autenticado. Redirecionando para login.");
+        window.location.href = "../index.html";
+
+    }
+});
+}
+
+function redirecionar() {
+    window.location.href = "/Html/confg.html"; 
+}
+
+window.onload = function() {
+    const elemento = document.getElementById("tu");
+    if (elemento) {
+        elemento.addEventListener("click", redirecionar);
+    }
+};
+
+main();
+
+</script>
+<script src="/app.js"></script>
+</html>

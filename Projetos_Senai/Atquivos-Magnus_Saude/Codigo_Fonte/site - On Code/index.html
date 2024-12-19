@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <style>
+        body {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2; 
+        }
+        .hidden {
+            display: none; 
+        }
+    </style>
+</head>
+<body class="hidden">
+    <div class="container">
+        <div class="header">
+            <h1>Entrar no Magnus</h1>
+        </div>
+        <div class="content">
+            <p>Para acessar o Magnus Saúde, informe os <strong>mesmos dados</strong> de cadastro utilizados na sua <strong>UBS</strong>.</p>
+            <h2>Preencher seus dados abaixo</h2>
+            <form>
+                <label for="email">Seu e-mail</label>
+                <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                
+                <label for="password">Sua senha</label>
+                <input type="password" id="password" placeholder="Digite sua senha" required>
+                
+                <button type="submit">Entre no Magnus</button>
+            </form>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+    
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyD4yp2qXBKP2ucmIgVicLVcm0G-EDimyJU",
+            authDomain: "magnus-saude.firebaseapp.com",
+            projectId: "magnus-saude",
+            storageBucket: "magnus-saude.appspot.com",
+            messagingSenderId: "990674908965",
+            appId: "1:990674908965:web:920811faf9b2d187760ccc",
+            measurementId: "G-3KM9Y50Y6E"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                window.location.href = '/html/home.html';
+            } else {
+                document.body.classList.remove('hidden'); 
+            }
+        });
+    
+        // Autenticar o usuário
+        document.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault(); 
+    
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+    
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    window.location.href = '/html/home.html';
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    alert("Erro ao fazer login: " + errorMessage);
+                });
+        });
+    </script>    
+</body>
+</html>

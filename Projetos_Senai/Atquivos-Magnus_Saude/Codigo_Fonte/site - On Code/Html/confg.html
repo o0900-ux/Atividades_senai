@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Magnus+</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+        
+        #logoutButton{
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="/Css/config.css">
+</head>
+<body>
+    <div class="card-background"></div>
+    <section>
+        <div class="card">
+            <h1 id="toggleDarkMode" style="font-size: 30px; font-family: Titillium Web, sans-serif;" >MAGNUS+</h1>
+            <p>Versão 24.10.11</p>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="info-section">
+        <div class="info-card">
+            <br>
+            <div class="info-item" id="pf">
+                <i class="material-icons" style="margin-right: 5px;">info_outline</i>
+                <div class="info-text">
+                    <h3>Dúvidas frequentes</h3>
+                    <p>Veja respostas para as dúvidas mais comuns</p>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="info-item" id="t" >
+                <i class="material-icons" style="margin-right: 5px;">description</i>
+                <div class="info-text" >
+                    <h3>Termos de uso</h3>
+                    <p>Veja as condições de termo de uso.</p>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="info-item" id="logoutButton">
+                <i class="material-icons" style="margin-right: 5px; color: brown;">logout</i>
+                <div class="info-text">
+                    <h3 style="color: brown;">LOGOUT</h3>
+                    <p style="color: brown;">Deslogue da sua conta.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr style="display: none;">
+        <p style="display: none;">Versão de teste</p>
+    </section>
+
+    <!-- Menu fixo inferior -->
+    <div class="footer">
+        <div class="footer-item disabled">
+            <a href="/Html/home.html">
+                <i class="material-icons">home</i><br>Página inicial
+            </a>
+        </div>
+        <div class="footer-item disabled">
+            <a href="/Html/notificacoes.html">
+                <i class="material-icons">notifications</i><br>Notificações
+            </a>
+        </div>
+        <div class="footer-item" >
+            <a href="#">
+                <i class="material-icons">settings</i><br>Configurações
+            </a>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="/Js/config.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
+

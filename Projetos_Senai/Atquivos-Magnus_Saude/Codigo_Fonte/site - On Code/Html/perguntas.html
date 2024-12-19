@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes - Magnus+</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f0f4f8; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        position: relative; 
+        -webkit-user-select: none;
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+        user-select: none; 
+    }
+
+    .card-background {
+        border-radius: 0 0 12px 12px;
+        position: absolute; 
+        width: 100%;
+        background: linear-gradient(to right, rgb(72, 130, 180), rgb(54, 109, 150), rgb(30, 80, 120));
+        height: 5em; 
+        z-index: 0; 
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        position: fixed;
+    }
+
+    .material-icons {
+        font-size: 25px; 
+        color: white;
+        align-self: flex-start; 
+        margin-top: 0.5em;
+        margin-left: 0.3em;
+    }
+
+    .texto {
+        font-size: 1em;
+        color: #f0f4f8;
+        margin-top: 0.3em; 
+    }
+
+    .card {
+    color: black; 
+    margin-top: 5.5em;
+    align-self: flex-start; 
+    align-self: flex-start; 
+    }
+</style>
+<body>
+    <div class="card-background">
+        <i class="material-icons" id="tu">arrow_back</i>
+        <h2 class="texto">Perguntas Frequentes - Magnus+</h2>
+    </div>
+
+    <div class="card">
+        <strong>1. O que é o Magnus+?</strong>
+        <p>O Magnus+ é um aplicativo que permite a marcação de consultas na sua UBS, acesso ao histórico médico e notificações sobre suas consultas.</p>
+        <br>
+        <strong>2. Quais dados o Magnus+ coleta sobre mim?</strong>
+        <p>O aplicativo coleta dados como nome, CPF, endereço, telefone, data de nascimento e histórico médico, todos cadastrados pela UBS.</p>
+        <br>
+        <strong>3. Como faço para marcar uma consulta?</strong>
+        <p>Após realizar seu login, vá até a seção de "Consultas" e siga os passos para escolher uma data e horário disponíveis.</p>
+        <br>
+        <strong>4. Posso acessar meu histórico médico pelo aplicativo?</strong>
+        <p>Sim, você pode visualizar suas consultas anteriores e dados médicos registrados pela UBS diretamente no aplicativo.</p>
+        <br>
+        <strong>5. O que acontece se eu esquecer minha senha?</strong>
+        <p>Se você esquecer sua senha, precisará entrar em contato com sua UBS e comparecer presencialmente para redefinir sua senha, pois o aplicativo não possui uma opção automática de recuperação de senha
+            Para exercer esses direitos, entre em contato com a UBS responsável pelo seu cadastro ou utilize os canais de atendimento do Magnus+.
+            </p>
+        <br>
+        <strong>6. Como faço para alterar meus dados cadastrais?</strong>
+        <p>Entre em contato diretamente com a UBS que fez seu cadastro para qualquer alteração de dados pessoais.</p>
+        <br>
+        <strong>7. Meus dados estão seguros?</strong>
+        <p>Sim, utilizamos medidas de segurança para proteger suas informações. No entanto, você também deve manter suas credenciais de login em segurança.</p>
+        <br>
+        <strong>8. Como posso falar com o suporte?</strong>
+        <p>Para dúvidas ou problemas técnicos, entre em contato pelo e-mail <a href="mailto:suporte@magnusmais.com">suporte@magnusmais.com</a>
+            ou diretamente com sua UBS.</p>
+        <br>
+    </div>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script>
+var firebaseConfig = {
+    apiKey: "AIzaSyD4yp2qXBKP2ucmIgVicLVcm0G-EDimyJU",
+    authDomain: "magnus-saude.firebaseapp.com",
+    projectId: "magnus-saude",
+    storageBucket: "magnus-saude.appspot.com",
+    messagingSenderId: "990674908965",
+    appId: "1:990674908965:web:920811faf9b2d187760ccc",
+    measurementId: "G-3KM9Y50Y6E"
+};
+
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+var auth = firebase.auth();
+
+function main() {
+auth.onAuthStateChanged(function(user) {
+    if (user) {
+        console.log("Usuário autenticado:", user.email);
+    } else {
+        console.log("Usuário não autenticado. Redirecionando para login.");
+        window.location.href = "../index.html";
+
+    }
+});
+}
+
+function redirecionar() {
+    window.location.href = "/Html/confg.html"; 
+}
+
+window.onload = function() {
+    const elemento = document.getElementById("tu");
+    if (elemento) {
+        elemento.addEventListener("click", redirecionar);
+    }
+};
+
+main();
+
+</script>
+<script src="/app.js"></script>
+</html>
