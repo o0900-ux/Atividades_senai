@@ -79,7 +79,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="/app.js"></script>
     <script>
-        // Configuração do Firebase
         var firebaseConfig = {
             apiKey: "AIzaSyD4yp2qXBKP2ucmIgVicLVcm0G-EDimyJU",
             authDomain: "magnus-saude.firebaseapp.com",
@@ -90,7 +89,6 @@
             measurementId: "G-3KM9Y50Y6E"
         };
 
-        // Inicializa o Firebase
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
         var auth = firebase.auth();
@@ -114,12 +112,10 @@
             return null;
         }
 
-        // Função para formatar CPF
         function formatCPF(cpf) {
             return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
         }
 
-        // Função para buscar dados do usuário
         function fetchUserData(uid) {
             const nome = getCookie("nome");
             const cpf = getCookie("cpf");
@@ -153,7 +149,6 @@
             });
         }
 
-        // Função principal
         function main() {
             auth.onAuthStateChanged(function(user) {
                 if (user) {
