@@ -8,7 +8,6 @@ var firebaseConfig = {
     measurementId: "G-3KM9Y50Y6E"
 };
 
-// Inicializando o Firebase
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 var auth = firebase.auth();
@@ -29,7 +28,6 @@ function formatRegistrationDate(isoDate) {
     });
 }
 
-// gerar o código QR
 function generateQRCode(data) {
     try {
         const qr = qrcode(0, 'L');
@@ -47,7 +45,6 @@ function generateQRCode(data) {
     }
 }
 
-// buscar os dados do usuário no Firestore
 function fetchUserData(uid) {
     db.collection("pacientes").doc(uid).get().then(function(doc) {
         if (doc.exists) {
@@ -79,7 +76,6 @@ function fetchUserData(uid) {
     });
 }
 
-// Verificando se o usuário está autenticado
 auth.onAuthStateChanged(function(user) {
     if (user) {
         fetchUserData(user.uid);
