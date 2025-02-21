@@ -41,8 +41,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
-    
-        // Configuração do Firebase
+
         const firebaseConfig = {
             apiKey: "AIzaSyD4yp2qXBKP2ucmIgVicLVcm0G-EDimyJU",
             authDomain: "magnus-saude.firebaseapp.com",
@@ -63,8 +62,7 @@
                 document.body.classList.remove('hidden'); 
             }
         });
-    
-        // Autenticar o usuário
+
         document.querySelector("form").addEventListener("submit", (event) => {
             event.preventDefault(); 
     
