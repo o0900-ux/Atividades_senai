@@ -60,7 +60,6 @@
     </div>
     
     <script>
-        // Configurações do Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyD4yp2qXBKP2ucmIgVicLVcm0G-EDimyJU",
             authDomain: "magnus-saude.firebaseapp.com",
@@ -71,13 +70,11 @@
             measurementId: "G-3KM9Y50Y6E"
         };
 
-        // Inicializa o Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
         const storage = firebase.storage();
 
-        // Validação de CPF
         function validarCPF(cpf) {
             cpf = cpf.replace(/\D/g, '');
             if (cpf.length !== 11 || /^[0-9]{11}$/.test(cpf) && new Set(cpf).size === 1) {
@@ -106,7 +103,6 @@
             return resto === parseInt(cpf[10]);
         }
 
-        // Login do usuário
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -116,14 +112,13 @@
             try {
                 await auth.signInWithEmailAndPassword(email, senha);
                 document.getElementById('mensagem').innerText = "Login realizado com sucesso!";
-                document.getElementById('cadastroForm').style.display = "block"; // Exibe o formulário de cadastro
-                document.getElementById('loginForm').style.display = "none"; // Esconde o formulário de login
+                document.getElementById('cadastroForm').style.display = "block"; 
+                document.getElementById('loginForm').style.display = "none"; 
             } catch (error) {
                 document.getElementById('mensagem').innerText = `Erro ao fazer login: ${error.message}`;
             }
         });
 
-        // Cadastrar Paciente
         document.getElementById('cadastroForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -137,18 +132,15 @@
             const historico = document.getElementById('historico').value;
             const foto = document.getElementById('foto').files[0];
 
-            // Validações
             if (!validarCPF(cpf)) {
                 document.getElementById('mensagem').innerText = "CPF inválido.";
                 return;
             }
 
-            // Cria usuário no Firebase Auth
             try {
                 const usuario = await auth.createUserWithEmailAndPassword(email, senha);
                 const uid = usuario.user.uid;
 
-                // Prepara dados do paciente
                 const paciente = {
                     nome,
                     email,
@@ -160,15 +152,13 @@
                     data_cadastro: new Date().toISOString(),
                 };
 
-                // Adiciona foto se houver
                 if (foto) {
                     const timestamp = Date.now();
-                    const storageRef = storage.ref(`pacientes/foto_${timestamp}.jpg`); // Cria um nome de arquivo único
-                    await storageRef.put(foto); // Tente o upload
-                    paciente.foto_url = await storageRef.getDownloadURL(); // Obtenha a URL após o upload
+                    const storageRef = storage.ref(`pacientes/foto_${timestamp}.jpg`); 
+                    await storageRef.put(foto); 
+                    paciente.foto_url = await storageRef.getDownloadURL(); 
                 }
 
-                // Salva paciente no Firestore
                 await db.collection('pacientes').doc(uid).set(paciente);
                 document.getElementById('mensagem').innerText = "Paciente cadastrado com sucesso!";
             } catch (error) {
@@ -176,13 +166,11 @@
             }
         });
 
-        // Função para obter a lista de imagens de um paciente
         async function obterImagensPaciente(uid) {
             const doc = await db.collection('pacientes').doc(uid).get();
             if (doc.exists) {
                 const paciente = doc.data();
                 console.log("Imagens do paciente:", paciente.foto_url);
-                // Exiba as imagens na interface do usuário (pode ser implementado)
             } else {
                 console.log("Paciente não encontrado.");
             }
